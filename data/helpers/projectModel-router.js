@@ -64,4 +64,16 @@ router.delete("/:id", (req, res) => {
       res.status(500).json({ err: "no deleting" });
     });
 });
+
+router.get("/:id/action", (req, res) => {
+  const projectId = req.params.id;
+  project
+    .getProjectActions(projectId)
+    .then(project => {
+      res.status(200).json(project);
+    })
+    .catch(err => {
+      res.status(500).json({ err: "no deleting here" });
+    });
+});
 module.exports = router;
